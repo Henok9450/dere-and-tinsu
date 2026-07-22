@@ -1,146 +1,175 @@
-<section id="signing-board" class="w-full p-10 bg-gray-100">
-  <h2 class="text-4xl font-bold text-center text-gray-800 mb-6">
-    💌 Leave Your Wishes
-  </h2>
-  <div class="story-grid grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-    <div class="w-full max-w-3xl mx-4 bg-white p-6 rounded-lg shadow-lg">
-      <!-- Input Form -->
-      <form (submit)="addMessage($event)" class="flex flex-col space-y-4">
-        <input
-          type="text"
-          [(ngModel)]="guestName"
-          name="guestName"
-          placeholder="Your Name"
-          class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
-        />
-        <textarea
-          [(ngModel)]="guestMessage"
-          name="guestMessage"
-          rows="4"
-          placeholder="Your Message"
-          class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
-        ></textarea>
-        <button
-          type="submit"
-          class="bg-pink-400 text-white px-6 py-3 rounded-lg shadow-md transition hover:bg-blue-700"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
-    <div
-      class="betty-container w-full max-w-3xl mx-4 bg-white p-6 rounded-lg shadow-lg"
-    >
-      <div class="betty-container">
-        <div>
-          <h1 class="text-2xl font-ubuntu text-gray-600 mb-6 betty-title">
-            መዝሙር 13:6
-          </h1>
-          <h2 class="text-2xl font-ubuntu text-gray-600 mb-6 betty">
-            ቸርነቱ በዝቶልኛልና፣ ለእግዚአብሔር እዘምራለሁ።
-          </h2>
-        </div>
-        <!-- <div>
-          <h1 class="text-2xl font-ubuntu text-gray-600 mb-6 betty-title">
-            Psalms 13:6
-          </h1>
-          <h2 class="text-2xl font-ubuntu text-gray-600 mb-6 betty">
-            I will sing the Lord’s praise, for he has been good to me.
-          </h2>
-          <br />
-        </div> -->
-      </div>
-    </div>
-  </div>
-  <!-- Messages Display in Masonry Grid -->
-  <div class="max-w-5xl mx-auto mt-8">
-    <h3 class="text-2xl font-semibold text-gray-700 mb-4 text-center">
-      📜 Special Thanks
+<section id="registry" class="py-16 sm:py-20 px-4 bg-transparent">
+  <div class="container mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-script text-center text-gold-accent mb-2">Wishes</h2>
+    <h3 class="text-3xl sm:text-4xl font-ubuntu font-bold text-center text-white mb-10 sm:mb-16">
+      Signing Board
     </h3>
-    <section class="w-full py-16 px-6 bg-gray-100">
-      <!-- First Row: Thanks to God and Family -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-        <div class="text-center md:text-left">
-          <h2 class="text-5xl font-bold text-gray-800 mb-4">GOD</h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            ታላቁ አምላካችንን እንዴት ልንገልጸው እንደምንችል አናውቅም። በውስጣችን ለእርሱ ያለ መውደድ ልዪ
-            ነው።ከመፈጠራችን ቀድሞ ቀኖቻችንን ያየ : ከልጅነት አይኑን ጥሎ ያሳደገ : ከብዙ ጉዳት የጠበቀን ;
-            ከአስፈሪ ውድቀት የከለከለልን : በጥፋታችን ጠፍተን እንዳንቀር ምህረቱን ያገነነልን ; በቤቱ ጸንተን
-            እንድንኖር ያትረፈረፈልን ቸርነቱ ; ለሁለንተናችን ማዕድ ከመልካምነቱ ያቋደሰን ; እጅግ ብዙ ብዙ የሆነ
-            ሊገለጽ የማይችል ጥልቅ መውደድ ; የልጅነታችን አምላክ . . የእኛ የራሳችን ቃላቶቻችንን ሊገልጹት
-            አይችሉምና እርሱ ራሱን በገለጠበት እና በገለጸበት ቅዱስ ቃሉ ተውሰን ምስጋናችንን እንሰዋ . . . <br />
-            <strong>"በእርሱ የሚያምን ሁሉ የዘላለም ሕይወት እንዲኖረው እንጂ እንዳይጠፋ..."</strong> -
-            ዮሐንስ 3:16
-          </p>
+
+    <!-- Wish Form & Scripture Split -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 max-w-5xl mx-auto">
+      
+      <!-- Input Form Card -->
+      <div class="bg-gray-800 p-6 sm:p-8 md:p-10 rounded-3xl shadow-xl border border-gray-700 flex flex-col justify-center">
+        <h4 class="text-2xl font-ubuntu font-bold text-white mb-6">Leave Your Wishes</h4>
+
+        <!-- Success Banner -->
+        <div
+          *ngIf="submitState === 'success'"
+          class="flex items-center gap-3 bg-green-900/40 border border-green-500/40 text-green-400 rounded-2xl px-5 py-4 mb-6 font-montserrat text-sm"
+        >
+          <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Your wish was sent to the couple! 🎉 Thank you for your blessing.</span>
         </div>
-        <div class="text-center md:text-left">
-          <h2 class="text-5xl font-bold text-gray-800 mb-4">Our Family</h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            የቤተሰቦቻችንን ለእኛ ዋጋ መክፈል ለእኛ መውደድ ለመግለጽ አስቸጋሪ ነው። ይህው አሳድገውን ለወግ ለማዕረግ
-            አብቅተው ይህው ወደ አዲሱ ቤታችን ሊሸኙን በቅተዋል። በተለይ በዝምታ ውስጥ ሁሉን ስለመቻል ትዕግስታቸው ብዙ
-            ስለሆነ እና ህመማቸውን አለመቻላቸውን ሁሉ ዋጥ እያደረጉ ከነፍሳቸው ቆርሰው ያሳደጉን አባቶቻችን : ደግሞም
-            እንክብካቤ እና ፍቅራቸው ከልጅነት ደግሞም አደጉ ራሳቸውን ቻሉ ብለው ያልተዉ ቁጥጥራቸው በአካል ብንርቅም
-            ያልቀነ ለእኛ አሳቢነታቸው ብዙ ስለሆኑት እናቾቻችን አምላካችንን እግዚአብሔርን እናመሰግናለን።
+
+        <!-- Error Banner -->
+        <div
+          *ngIf="submitState === 'error'"
+          class="flex items-center gap-3 bg-red-900/40 border border-red-500/40 text-red-400 rounded-2xl px-5 py-4 mb-6 font-montserrat text-sm"
+        >
+          <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M12 3a9 9 0 100 18A9 9 0 0012 3z"/>
+          </svg>
+          <span>Something went wrong. Please try again.</span>
+        </div>
+
+        <form (submit)="addMessage($event)" class="flex flex-col space-y-6">
+
+          <!-- Photo Picker -->
+          <div class="flex flex-col items-center gap-2">
+            <div
+              class="relative w-20 h-20 rounded-full cursor-pointer group"
+              (click)="photoInput.click()"
+              [title]="photoPreview ? 'Change photo' : 'Add your photo (optional)'"
+            >
+              <!-- Preview or placeholder -->
+              <img
+                *ngIf="photoPreview"
+                [src]="photoPreview"
+                class="w-20 h-20 rounded-full object-cover border-2 border-gold-accent shadow-md"
+                alt="Your photo"
+              />
+              <div
+                *ngIf="!photoPreview"
+                class="w-20 h-20 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 border-2 border-dashed border-pink-500/50 flex items-center justify-center shadow-sm"
+              >
+                <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                </svg>
+              </div>
+              <!-- Hover overlay -->
+              <div class="absolute inset-0 rounded-full bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
+                <svg class="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+                </svg>
+              </div>
+            </div>
+            <span class="text-xs font-montserrat text-gray-500">
+              {{ photoPreview ? 'Click to change photo' : 'Add your photo (optional)' }}
+            </span>
+            <!-- Hidden file input -->
+            <input
+              #photoInput
+              type="file"
+              accept="image/*"
+              class="hidden"
+              (change)="onPhotoSelected($event)"
+            />
+          </div>
+
+          <input
+            type="text"
+            [(ngModel)]="guestName"
+            name="guestName"
+            placeholder="Your Name"
+            required
+            [disabled]="submitState === 'sending'"
+            class="w-full py-3 bg-transparent border-t-0 border-l-0 border-r-0 border-b border-gray-600 focus:border-gold-accent focus:ring-0 outline-none font-montserrat text-gray-200 placeholder-gray-500 transition-colors disabled:opacity-50"
+          />
+          <textarea
+            [(ngModel)]="guestMessage"
+            name="guestMessage"
+            rows="3"
+            placeholder="Write your blessings and wishes..."
+            required
+            [disabled]="submitState === 'sending'"
+            class="w-full py-3 bg-transparent border-t-0 border-l-0 border-r-0 border-b border-gray-600 focus:border-gold-accent focus:ring-0 outline-none font-montserrat text-gray-200 placeholder-gray-500 transition-colors resize-none disabled:opacity-50"
+          ></textarea>
+          <button
+            type="submit"
+            [disabled]="submitState === 'sending'"
+            class="flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500 to-sage-green hover:from-pink-600 hover:to-sage-green text-white font-montserrat font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:-translate-y-0.5 duration-200 mt-4 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+          >
+            <!-- Spinner -->
+            <svg *ngIf="submitState === 'sending'" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+            </svg>
+            <span>{{ submitState === 'sending' ? 'Sending...' : 'Submit Message' }}</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Scripture Text Card -->
+      <div class="bg-gradient-to-tr from-gray-800 to-gray-900 p-6 sm:p-8 md:p-10 rounded-3xl shadow-xl border border-gray-700 flex flex-col justify-center text-center relative overflow-hidden">
+        <div class="absolute -top-10 -left-10 w-40 h-40 bg-gold-accent/5 rounded-full blur-2xl"></div>
+        <div class="relative">
+          <span class="text-4xl font-script text-gold-accent mb-4 block">መዝሙር 13:6</span>
+          <p class="text-2xl font-ubuntu text-gray-100 leading-relaxed font-semibold mb-6">
+            "ቸርነቱ በዝቶልኛልና፣ ለእግዚአብሔር እዘምራለሁ።"
           </p>
+          <div class="w-16 h-0.5 bg-gold-accent mx-auto my-4 opacity-50"></div>
+          <span class="text-sm font-montserrat tracking-widest uppercase text-gray-500">Psalms 13:6</span>
         </div>
       </div>
 
-      <!-- Second Row: Thanks to Pastors -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="text-center md:text-left flex items-center gap-4">
-          <img
-            src="assets/images/childhood.jpg"
-            class="w-24 h-24 object-cover rounded-full shadow-md"
-            alt="Childhood Pastor"
-          />
-          <div>
-            <h3 class="text-2xl font-semibold text-gray-800">
-              Our Childhood Pastor
-            </h3>
-            <p class="text-lg text-gray-700">
-              መጋቢያዊው እንክብካቤ የልጅነታችንን አምላክ እንድናውቅ እንድንወድ ደግሞም እንድንፈራ በሕይወት ምሳሌነት
-              ከፊት የመሩንን ደግሞም ኢየሱስን በመከተል ሕይወት የደቀመዝሙርነት ሕይወታችንን ከማር ይልቅ የሚጣፍጠውን
-              የከበረውን የሕይወት መርህ መቅጃ ምንጭ የሆነውን ቅዱስ ቃሉን በመውደድ እንድናድግ ደግሞ በአምልኮ
-              ሕይወታችን ሁለንተናዊ እድገት ካላቸው የምክር ቃል ጥቂት እንኳን ያላጎደሉብንን የልጅነታችን
-              የቤተክርስቲያን መጋቢዎቻችንን እና መምህራኖቻችንን ስለእነርሱ የዘመናት አምላክ እግዚአብሔር በየዘመኑ
-              የእርሱ የሆኑ አሉትና ለስሙ ምስጋና ይሁን።
-            </p>
-          </div>
-        </div>
-        <div class="text-center md:text-left flex items-center gap-4">
-          <img
-            src="assets/images/zer.jpg"
-            class="w-24 h-24 object-cover rounded-full shadow-md"
-            alt="Current Pastor"
-          />
-          <div>
-            <h3 class="text-2xl font-semibold text-gray-800">
-              Our Present Pastor
-            </h3>
-            <p class="text-lg text-gray-700">
-              አሁን ወዳለንበት የቅዱሳን ሕብረት ስንቀላቀል በፍጹም እንግድነት እንዳይሰማን በፍጥነት ቤተሰብ እንድንሆን
-              ያደረገን ደግሞም ለአዲስነታችን ፍርሃት ሳያድርበት እናገለግል ዘንድ ሁሉንም መልካም እድል የሰጠን የፍቅር
-              ግንኙነታችን ወደ ጋብቻ ያድግ ዘንድ የሁልጊዜ ምክሩ እና ጸሎቱ የማይለየን ደግሞ ለጋብቻ በወሰንን ጊዜ
-              አብሮን ለአንድ ወር የጾምና የጸሎት ጊዜ የሰጠን ነገ ተብሎ በሚጠራ ቀናችን ላይ መልካም የተባለ ሁሉ
-              እንዲያገኝን ስለነፍሳችን የሚተጋ ካለው ሁሉ የማይሰስት : ሩቅ ሆኖ ሳይሆን ቤቱ ድረስ አስጠግቶ አባታዊ
-              ፍቅሩን የሚቸረን ውድ መጋቢያችን ፓስተር ዘሪሁን እንዲሁም የቤተክርስቲያናችን አገልጋዬች ስለእናንተ
-              የበረከት አምላክ እግዚአብሔር ይባረክ
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
 
-    <div class="masonry-grid">
-      <div
-        *ngFor="let message of messages"
-        class="message-card"
-        [ngStyle]="{ 'background-color': message.color }"
-      >
-        <p class="text-lg font-semibold text-gray-800">{{ message.name }}</p>
-        <img src="{{ message.src }}" alt="" srcset="" />
-        <p class="text-gray-700 italic">{{ message.text }}</p>
+    <!-- Removed Gratitude and Special Thanks sections per user request -->
+
+  </div>
+</section>
+
+<!-- Gratitude Section -->
+<section class="py-24 px-4 bg-transparent relative overflow-hidden">
+  <!-- Subtle background glow -->
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+  
+  <div class="container mx-auto max-w-4xl relative z-10">
+    <div class="bg-gradient-to-b from-gray-900/80 to-gray-950/90 backdrop-blur-md p-10 sm:p-16 rounded-[3rem] shadow-2xl border border-gold-accent/20 relative text-center group transition-all duration-500 hover:border-gold-accent/40">
+      
+      <!-- Watermark Script -->
+      <div class="absolute top-10 right-10 text-gray-800/50 text-6xl md:text-8xl select-none font-script pointer-events-none opacity-40 group-hover:opacity-60 transition-opacity duration-700">Thank You</div>
+      <div class="absolute bottom-10 left-10 text-gray-800/50 text-5xl md:text-7xl select-none font-script pointer-events-none opacity-40 group-hover:opacity-60 transition-opacity duration-700">Blessings</div>
+
+      <!-- Icon & Header -->
+      <div class="flex flex-col items-center justify-center mb-10 relative">
+        <div class="w-16 h-16 bg-gold-accent/10 border border-gold-accent/30 text-gold-accent rounded-full flex items-center justify-center mb-4 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+        <h2 class="text-3xl font-script text-gold-accent mb-2">Gratitude</h2>
+        <h3 class="text-4xl sm:text-5xl font-ubuntu font-bold text-white tracking-wide">ምስጋናችን</h3>
+        <div class="w-24 h-px bg-gradient-to-r from-transparent via-gold-accent/50 to-transparent mt-6"></div>
       </div>
+      
+      <!-- Content -->
+      <div class="space-y-8 text-base sm:text-lg font-montserrat text-gray-300 leading-relaxed font-light italic relative z-10 px-4 sm:px-10">
+        <p>
+          ለቤተሰቦቻችን, ለወዳጆቻችን, በደስታችን ቀን እኛን ለማጀብ ሚዜ ለሆናችሁን እንዲሁም እራሳችሁን ለምታውቁ ከልጅነታችን እስካሁኗ ቀን ድረስ እጅግ በብዙ ለዋላችሁልን ሁሉ ምስጋናችን ይድረሳችሁ:: የዘራችሁብን መልካም ዘር መቶ እጥፍ ያፍራላችሁ ::
+        </p>
+        <p>
+          በነበሩን የእጮኝነት ዓመታት ባለፍንበት መንገድ ሁሉ አብሮን ለነበረ በቀናቶቻችን ውስጥ የአንዳችንን ልብ ለሌላኛችን መልካም ያደረገ የመልካም ነገር ሁሉ ምንጭ የሆነውን በጓዳ የረዳንን እግዚአብሔርን በአደባባይ እናመሰግነዋለን! አባትነቱን ታምነን ደግም የነገን የአንድነት ሕይወት እንጀምራለን ::
+        </p>
+        <div class="pt-6">
+          <p class="text-gold-accent font-semibold text-2xl not-italic tracking-wide font-ubuntu">
+            እግዚአብሔር ለኛ መልካም ነው!
+          </p>
+        </div>
+      </div>
+      
     </div>
   </div>
 </section>

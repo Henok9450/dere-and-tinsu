@@ -1,72 +1,70 @@
-<section class="gallery-section w-full p-10 bg-gray-100">
-    <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">Our Gallery</h2>
-    <div class="grid grid-cols-3 md:grid-cols-4 gap-6">
-      <!-- Flip Animation -->
-      <div class="group perspective">
-        <div class="relative w-full h-56 transform transition-all duration-500 group-hover:rotate-y-180">
-          <img src="assets/images/042.webp" alt="Gallery Image" class="absolute w-full h-full object-cover backface-hidden">
-          <div class="absolute w-full h-full bg-gray-800 flex items-center justify-center text-white text-lg font-semibold rotate-y-180 backface-hidden">
-            <img src="assets/images/012.webp" alt="Gallery Image" class="absolute w-full h-full object-contain backface-hidden">
+<section id="gallery" class="py-20 px-4 bg-transparent">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-script text-center text-gold-accent mb-2">Memories</h2>
+    <h3 class="text-4xl font-ubuntu font-bold text-center text-white mb-16">
+      Our Gallery
+    </h3>
+
+    <!-- Masonry Grid -->
+    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6 max-w-7xl mx-auto">
+      @for (img of images; track img; let idx = $index) {
+        <div 
+          (click)="openLightbox(img, idx)"
+          class="break-inside-avoid overflow-hidden rounded-2xl shadow-sm border border-gray-700 hover:shadow-xl hover:border-gold-accent/40 transition-all duration-300 hover:scale-[1.02] cursor-pointer group relative"
+        >
+          <img 
+            [src]="img" 
+            alt="Gallery photo" 
+            loading="lazy" 
+            class="w-full h-auto object-cover rounded-2xl"
+          >
+          <!-- Hover heart overlay -->
+          <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
+            <span class="text-white text-3xl transform scale-75 group-hover:scale-100 transition-transform duration-300">❤️</span>
           </div>
         </div>
+      }
+    </div>
+  </div>
+
+  <!-- Interactive Lightbox Modal -->
+  @if (activeImage) {
+    <div 
+      (click)="closeLightbox()"
+      class="fixed inset-0 bg-black/95 backdrop-blur-sm z-[1000] flex items-center justify-center p-4 transition-all duration-300 animate-fade-in"
+    >
+      <!-- Close Button -->
+      <button 
+        (click)="closeLightbox()" 
+        class="absolute top-6 right-6 text-white/70 hover:text-white text-4xl font-light hover:scale-110 transition-transform outline-none"
+      >
+        &times;
+      </button>
+
+      <!-- Prev Button -->
+      <button 
+        (click)="prevImage($event)" 
+        class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 bg-white/10 hover:bg-white/20 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-2xl md:text-3xl font-light hover:scale-110 transition-transform outline-none z-50"
+      >
+        &#8249;
+      </button>
+
+      <!-- Fullscreen Image -->
+      <div class="max-w-4xl max-h-[85vh] flex items-center justify-center p-2 relative" (click)="$event.stopPropagation()">
+        <img 
+          [src]="activeImage" 
+          alt="Enlarged photo" 
+          class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain animate-scale-up"
+        >
       </div>
-      
-      <!-- Fade Effect -->
-      <div class="relative overflow-hidden fade-hover">
-        <img src="assets/images/044.webp" alt="Gallery Image" class="w-full h-56 object-cover">
-      </div>
-      
-      <!-- Glide Animation -->
-      <div #galleryGlide class="top-glide glide">
-        <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides">
-            <li class="glide__slide"><img src="assets/images/07.webp" alt="Gallery Image" class="img-top"></li>
-            <li class="glide__slide"><img src="assets/images/063.webp" alt="Gallery Image" class="img-top"></li>
-            <li class="glide__slide"><img src="assets/images/065.webp" alt="Gallery Image" class="img-top"></li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Swipe Effect -->
-      <div class="relative overflow-hidden swipe-hover">
-        <img src="assets/images/012.webp" alt="Gallery Image" class="w-full h-56 object-cover">
-      </div>
-    </div> 
+
+      <!-- Next Button -->
+      <button 
+        (click)="nextImage($event)" 
+        class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 bg-white/10 hover:bg-white/20 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-2xl md:text-3xl font-light hover:scale-110 transition-transform outline-none z-50"
+      >
+        &#8250;
+      </button>
+    </div>
+  }
 </section>
-<section id="gallery" class="py-16 px-4 bg-gray-100">
-    <div class="container mx-auto"> 
-      <!-- Gallery Slider -->
-      <div class="gallery-slider glide">
-        <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides">
-            <li *ngFor="let img of OurImages" class="glide__slide">
-              <div class="relative group">
-                <img [src]="img" alt="Gallery Image" class="w-full h-64 object-cover rounded-lg shadow-lg transform transition-transform duration-300 group-hover:scale-105">
-                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                  <span class="text-white text-lg font-montserrat">❤️</span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-  <!-- <ngx-masonry [options]="{ gutter: 1 }">
-    <div ngxMasonryItem class="masonry-item" *ngFor="let item of masonaryImages">
-      <img [src]="item" alt="Gallery Image" masonryLazy loading="lazy" width="400px" height="600px" 
-      >   
-   </div>
-  </ngx-masonry> -->
-  <section class="gallery-section w-full p-6 md:p-10 bg-gray-100">
-   
-    <!-- Responsive Masonry Grid with CSS -->
-    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-      <div *ngFor="let item of masonaryImages" class="break-inside-avoid overflow-hidden rounded-lg shadow-lg">
-        <img [src]="item" alt="Gallery Image" loading="lazy" class="w-full h-auto object-cover rounded-lg">
-      </div>
-    </div>
-  </section>
-  
-  

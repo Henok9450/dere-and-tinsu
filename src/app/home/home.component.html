@@ -1,24 +1,143 @@
 <section
-  class="hero-section h-screen flex items-top justify-center bg-cover bg-center"
-  style="background-image: url('assets/images/04.webp')"
+  class="hero-section min-h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden"
+  style="background-image: url('assets/images/PHDE0660.JPG')"
 >
-  <div
-    class="absolute inset-0 flex items-center justify-center text-center text-white bg-black bg-opacity-40"
-  >
-    <div>
-      <h1 class="text-6xl font-ubuntu font-bold animate-fade-in">
-        Sam & Betty
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
+
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 py-12
+              flex flex-col items-center text-white text-center
+              lg:flex-row lg:items-center lg:justify-between lg:text-left lg:gap-12">
+
+    <!-- ── LEFT COL: Names + tagline ── -->
+    <div class="flex-shrink-0 lg:max-w-sm xl:max-w-md animate-fade-in">
+      <p class="text-[11px] font-montserrat tracking-[0.3em] uppercase text-gold-accent/80 mb-3 lg:text-left text-center">
+        
+      </p>
+
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-script text-white drop-shadow-md leading-tight lg:text-left text-center">
+        Dere <span class="text-gold-accent">&amp;</span> Tinsu
       </h1>
-      <p class="text-2xl font-montserrat mt-4 animate-fade-in-delay">
+
+      <div class="w-20 h-0.5 bg-gold-accent my-4 lg:mx-0 mx-auto"></div>
+
+      <p class="text-base sm:text-lg lg:text-xl font-montserrat tracking-[0.3em] uppercase text-pink-100 mb-6 lg:text-left text-center">
         Save the Date
       </p>
-      <p class="text-xl font-montserrat mt-2 animate-fade-in-delay">
-        February 22, 2025
-      </p>
-      <!-- <div
-        id="countdown"
-        class="mt-8 font-montserrat text-xl animate-fade-in-delay"
-      ></div> -->
+
+      <!-- Venue & date info — visible on desktop left col -->
+      <div class="hidden lg:flex flex-col gap-2 mt-2">
+        <p class="text-sm font-montserrat text-white/70">
+          📍 Semien Mulu Wengel Local Church, Addis Ababa
+        </p>
+        <p class="text-sm font-montserrat text-white/70">
+          🕒 August 2, 2026 &bull; 3:00 PM
+        </p>
+      </div>
+    </div>
+
+    <!-- ── RIGHT COL: Calendar + Countdown ── -->
+    <div class="flex-1 flex flex-col items-center animate-fade-in-delay mt-6 lg:mt-64 xl:mt-72 2xl:mt-80">
+
+      <!-- Calendar Card -->
+      <div class="calendar-card w-full max-w-xs sm:max-w-sm lg:max-w-xs xl:max-w-sm">
+
+        <!-- Dual Month Header -->
+        <div class="flex items-center justify-center gap-3 mb-3">
+          <div class="text-center">
+            <p class="font-montserrat font-semibold text-[11px] sm:text-xs tracking-[0.18em] uppercase text-gold-accent leading-none">August 2026</p>
+          </div>
+          <span class="text-white/20 text-xs">|</span>
+          <div class="text-center">
+            <p class="font-montserrat font-semibold text-[11px] sm:text-xs tracking-[0.1em] text-pink-200 leading-none">ሐምሌ 2018</p>
+          </div>
+        </div>
+
+        <!-- Weekday Headers -->
+        <div class="grid grid-cols-7 text-center text-[9px] font-bold tracking-wider text-pink-200/80 mb-2 font-montserrat">
+          <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+        </div>
+
+        <!-- Date Grid -->
+        <div class="grid grid-cols-7 text-center font-montserrat font-medium gap-y-1 justify-items-center items-center">
+          <!-- 6 blank cells: Aug 1 falls on Saturday -->
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+
+          @for (day of calendarDays; track day.gc) {
+            @if (day.gc === 2) {
+              <!-- Wedding date: pulsing heart highlight -->
+              <span class="relative cal-cell flex flex-col items-center justify-center font-bold text-white">
+                <svg class="heart-highlight" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span class="relative z-10 cal-num">{{ day.gc }}</span>
+                <span class="relative z-10 cal-geez text-pink-300">{{ day.geez }}</span>
+              </span>
+            } @else {
+              <!-- Regular day -->
+              <span class="cal-cell flex flex-col items-center justify-center text-white/80">
+                <span class="cal-num">{{ day.gc }}</span>
+                <span class="cal-geez text-pink-200/60">{{ day.geez }}</span>
+              </span>
+            }
+          }
+
+          <!-- Trailing blank cells -->
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <!-- Dual Date Badge -->
+        <div class="mt-3 flex items-center justify-center">
+          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3 py-1">
+            <span class="text-[9px] font-montserrat font-semibold text-white/70 tracking-wide">Aug 2, 2026</span>
+            <span class="text-white/30 text-[8px]">·</span>
+            <span class="text-[9px] font-montserrat font-semibold text-pink-200/90 tracking-wide">ሐምሌ ፳፮, 2018</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Venue info on mobile (below calendar) -->
+      <div class="flex lg:hidden flex-col items-center gap-1 mt-4 text-center">
+        <p class="text-xs font-montserrat text-white/60">📍 Semien Mulu Wengel Local Church, Addis Ababa</p>
+        <p class="text-xs font-montserrat text-white/60">🕒 August 2, 2026 &bull; 3:00 PM</p>
+      </div>
+
+      <!-- Countdown Timer -->
+      <div class="animate-fade-in-delay mt-5">
+        @if (isToday) {
+          <div class="px-6 py-4 bg-white bg-opacity-15 backdrop-blur-md border border-white border-opacity-20 rounded-2xl inline-block shadow-xl animate-bounce">
+            <span class="text-2xl md:text-3xl font-ubuntu font-bold text-white tracking-wide">
+              Today is the Big Day! 💍✨
+            </span>
+          </div>
+        } @else if (isPast) {
+          <div class="px-6 py-4 bg-white bg-opacity-15 backdrop-blur-md border border-white border-opacity-20 rounded-2xl inline-block shadow-xl">
+            <span class="text-xl md:text-2xl font-ubuntu font-bold text-white tracking-wide">
+              Happily Married! 💖
+            </span>
+          </div>
+        } @else {
+          <div class="flex justify-center gap-2 sm:gap-3">
+            <div class="flex flex-col items-center bg-white bg-opacity-15 backdrop-blur-md border border-white border-opacity-20 rounded-2xl p-3 w-16 sm:w-20 lg:w-20 shadow-xl transition-transform hover:scale-105">
+              <span class="text-2xl sm:text-3xl font-ubuntu font-bold text-white tracking-tight">{{ days }}</span>
+              <span class="text-[9px] sm:text-[10px] font-montserrat font-semibold uppercase tracking-wider text-pink-100 mt-1">Days</span>
+            </div>
+            <div class="flex flex-col items-center bg-white bg-opacity-15 backdrop-blur-md border border-white border-opacity-20 rounded-2xl p-3 w-16 sm:w-20 lg:w-20 shadow-xl transition-transform hover:scale-105">
+              <span class="text-2xl sm:text-3xl font-ubuntu font-bold text-white tracking-tight">{{ hours }}</span>
+              <span class="text-[9px] sm:text-[10px] font-montserrat font-semibold uppercase tracking-wider text-pink-100 mt-1">Hours</span>
+            </div>
+            <div class="flex flex-col items-center bg-white bg-opacity-15 backdrop-blur-md border border-white border-opacity-20 rounded-2xl p-3 w-16 sm:w-20 lg:w-20 shadow-xl transition-transform hover:scale-105">
+              <span class="text-2xl sm:text-3xl font-ubuntu font-bold text-white tracking-tight">{{ minutes }}</span>
+              <span class="text-[9px] sm:text-[10px] font-montserrat font-semibold uppercase tracking-wider text-pink-100 mt-1">Mins</span>
+            </div>
+            <div class="flex flex-col items-center bg-white bg-opacity-15 backdrop-blur-md border border-white border-opacity-20 rounded-2xl p-3 w-16 sm:w-20 lg:w-20 shadow-xl transition-transform hover:scale-105">
+              <span class="text-2xl sm:text-3xl font-ubuntu font-bold text-white tracking-tight text-blush-pink animate-pulse">{{ seconds }}</span>
+              <span class="text-[9px] sm:text-[10px] font-montserrat font-semibold uppercase tracking-wider text-pink-100 mt-1">Secs</span>
+            </div>
+          </div>
+        }
+      </div>
+
     </div>
   </div>
 </section>

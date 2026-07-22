@@ -1,79 +1,88 @@
-<section class="our-story flex flex-col">
-  <!-- Groom's Section -->
-  <div class="groom-section flex-1 flex items-center justify-center bg-gray-50">
-    <div class="container mx-auto flex items-center gap-8 p-8 m-4">
-      <!-- Groom Content -->
-      <div class="w-3/5">
-        <h2 class="text-4xl font-ubuntu font-bold text-gray-800 mb-4">
-          Meet the Groom
-        </h2>
-        <h3 class="text-2xl font-ubuntu text-gray-600 mb-6">Samuel Heiru</h3>
-        <p class="text-lg font-montserrat text-gray-600 leading-relaxed">
-          I want to express myself as someone who was once a sinner, living in
-          darkness. But through the love of our Holy Father, revealed in His
-          Son, Jesus Christ, I have come into the light from darkness, into
-          blessed hope from hopelessness, into deep joy from depression, and
-          into strength from brokenness. Now, I live by faith, sanctified by the
-          Holy Spirit and guided by the Scriptures.
-        </p>
-      </div>
-      <!-- Groom Slider -->
-      <div class="w-2/5 m-2">
-        <div class="groom-slider glide">
-          <div class="glide__track" data-glide-el="track">
-            <ul class="glide__slides m-4">
-              <li *ngFor="let img of groomImages" class="glide__slide">
+<section class="py-16 sm:py-20 bg-transparent">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl sm:text-3xl font-script text-center text-gold-accent mb-2">Introducing</h2>
+    <h3 class="text-3xl sm:text-4xl font-ubuntu font-bold text-center text-white mb-10 sm:mb-16">The Bride & Groom</h3>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+      
+      <!-- Groom's Card -->
+      <div class="bg-gray-900 rounded-3xl shadow-xl border border-gray-700 overflow-hidden flex flex-col hover:shadow-2xl hover:border-gold-accent/40 transition-all duration-300">
+        <!-- Groom Slider -->
+        <div class="groom-slider glide relative w-full h-[500px] sm:h-[600px] bg-gray-900 flex items-center justify-center">
+          <div class="glide__track h-full w-full" data-glide-el="track">
+            <ul class="glide__slides h-full">
+              <li *ngFor="let img of groomImages" class="glide__slide h-full">
                 <img
                   [src]="img"
                   alt="Groom"
-                  class="w-full h-96 object-contain rounded-lg shadow-xl"
+                  class="w-full h-full object-cover object-top"
                 />
               </li>
             </ul>
           </div>
         </div>
+        
+        <!-- Groom Content -->
+        <div class="p-5 sm:p-8 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-montserrat uppercase tracking-widest text-sage-green font-bold">Meet the Groom</span>
+            <h4 class="text-3xl font-ubuntu font-bold text-white mt-1 mb-4">Dere</h4>
+            <p class="text-base font-montserrat text-gray-400 leading-relaxed font-light italic">
+              "I want to express myself as someone who was once a sinner, living in
+              darkness. But through the love of our Holy Father, revealed in His
+              Son, Jesus Christ, I have come into the light from darkness, into
+              blessed hope from hopelessness, into deep joy from depression, and
+              into strength from brokenness. Now, I live by faith, sanctified by the
+              Holy Spirit and guided by the Scriptures."
+            </p>
+          </div>
+          <div class="text-right mt-6">
+            <span class="font-script text-3xl text-gold-accent select-none">Dere</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- Bride's Section -->
-  <div class="bride-section flex-1 flex items-center justify-center bg-white">
-    <div class="container mx-auto flex items-center gap-8 p-8">
-      <!-- Bride Slider -->
-      <div class="w-3/5">
-        <div class="bride-slider glide">
-          <div class="glide__track" data-glide-el="track">
-            <ul class="glide__slides">
-              <li *ngFor="let img of brideImages" class="glide__slide">
+      
+      <!-- Bride's Card -->
+      <div class="bg-gray-900 rounded-3xl shadow-xl border border-gray-700 overflow-hidden flex flex-col hover:shadow-2xl hover:border-gold-accent/40 transition-all duration-300">
+        <!-- Bride Slider -->
+        <div class="bride-slider glide relative w-full h-[500px] sm:h-[600px] bg-gray-900 flex items-center justify-center">
+          <div class="glide__track h-full w-full" data-glide-el="track">
+            <ul class="glide__slides h-full">
+              <li *ngFor="let img of brideImages" class="glide__slide h-full">
                 <img
                   [src]="img"
                   alt="Bride"
-                  class="w-full h-64 object-cover object-top rounded-lg shadow-xl"
+                  class="w-full h-full object-cover object-top"
                 />
               </li>
             </ul>
           </div>
         </div>
+        
+        <!-- Bride Content -->
+        <div class="p-5 sm:p-8 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-montserrat uppercase tracking-widest text-pink-400 font-bold">Meet the Bride</span>
+            <h4 class="text-3xl font-ubuntu font-bold text-white mt-1 mb-4">Tinsu</h4>
+            <p class="text-base font-montserrat text-gray-400 leading-relaxed font-light italic">
+              "When I think about myself, the first thing that sparks in my mind and
+              heart at the same time is the depth of Christ's love for us—even when
+              we were against Him. As Paul says in Romans 5:10, 'For if, while we
+              were God's enemies, we were reconciled to Him through the death of His
+              Son, how much more, having been reconciled, shall we be saved through
+              His life!' I cannot even imagine what our fate would be without Him.
+              As John 10:16 says, 'I have other sheep that are not of this sheep
+              pen. I must bring them also. They too will listen to my voice, and
+              there shall be one flock and one shepherd.' I am one of those
+              sheep—called into His fold and safely under His care as my Shepherd."
+            </p>
+          </div>
+          <div class="text-right mt-6">
+            <span class="font-script text-3xl text-gold-accent select-none">Tinsu</span>
+          </div>
+        </div>
       </div>
-      <!-- Bride Content -->
-      <div class="w-2/5 betty-container">
-        <!-- <h2 class="text-4xl font-ubuntu font-bold text-gray-800 mb-4">Meet the Bride</h2> -->
-        <h3 class="text-2xl font-ubuntu text-gray-600 mb-6 betty">
-          Bethelhem S.
-        </h3>
-        <p class="text-lg font-montserrat text-gray-600 leading-relaxed">
-          When I think about myself, the first thing that sparks in my mind and
-          heart at the same time is the depth of Christ's love for us—even when
-          we were against Him. As Paul says in Romans 5:10, "For if, while we
-          were God’s enemies, we were reconciled to Him through the death of His
-          Son, how much more, having been reconciled, shall we be saved through
-          His life!" <br/> I cannot even imagine what our fate would be without Him.
-          As John 10:16 says, "I have other sheep that are not of this sheep
-          pen. I must bring them also. They too will listen to my voice, and
-          there shall be one flock and one shepherd." I am one of those
-          sheep—called into His fold and safely under His care as my Shepherd.
-        </p>
-      </div>
+      
     </div>
   </div>
 </section>

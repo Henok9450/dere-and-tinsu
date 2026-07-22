@@ -1,42 +1,166 @@
-<section id="wedding-details" class="section bg-gray">
-  <div class="container">
-    <h2 class="text-4xl font-ubuntu font-bold text-center text-gray-800 mb-12">
-      Our Story
+<section id="wedding-details" class="py-16 sm:py-20 px-4 bg-transparent">
+  <div class="container mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-ubuntu font-bold text-center text-white mb-8 sm:mb-12">
+      Wedding Details & Program
     </h2>
 
-    <div class="details-grid">
-      <div class="details-item">
-        <h3 class="details-subtitle">Ceremony</h3>
-        <p class="details-text">
-          22 Full Gospel Believers Church<br />3:00 PM / 09:00 LT
+    <!-- Ceremony & Dress Code Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+      <div class="bg-gray-800 p-5 sm:p-8 rounded-2xl shadow-xl border border-gray-700 text-center transition-all hover:-translate-y-1 hover:border-sage-green/50 duration-300">
+        <div class="w-14 h-14 bg-sage-green bg-opacity-20 text-sage-green rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-ubuntu font-bold text-white mb-2">የቃልኪዳን ስነስርዓት</h3>
+        <p class="text-lg font-montserrat text-gray-300">
+          ሰሜን ሙሉ ወንጌል ቤተክርስቲያን
+        </p>
+        <p class="text-base font-montserrat text-sage-green font-semibold mt-1">
+          4:50 LT
         </p>
       </div>
-      <div class="details-item">
-        <h3 class="details-subtitle">Dress Code</h3>
-        <p class="details-text">Semi-Formal</p>
+
+      <div class="bg-gray-800 p-5 sm:p-8 rounded-2xl shadow-xl border border-gray-700 text-center transition-all hover:-translate-y-1 hover:border-pink-400/50 duration-300">
+        <div class="w-14 h-14 bg-pink-900/40 text-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122l.188-.465a.6.6 0 00-.404-.783A4.7 4.7 0 009 14a4.7 4.7 0 00-.314.874.6.6 0 00.404.783l.188.465zm0 0l-1.022 2.556a1.2 1.2 0 001.022 1.622h1.644a1.2 1.2 0 001.022-1.622l-1.022-2.556m-1.644 0h1.644m-1.644 0a1.2 1.2 0 011.022-1.622h1.644a1.2 1.2 0 011.022 1.622" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-ubuntu font-bold text-white mb-2">Dress Code</h3>
+        <p class="text-lg font-montserrat text-gray-300">
+          Semi-Formal
+        </p>
+        <p class="text-base font-montserrat text-pink-400 font-semibold mt-1">
+          Elegant & Creative
+        </p>
       </div>
     </div>
-    <div class="mapouter h-96 w-full">
-      <div class="gmap_canvas h-96 w-full">
-        <iframe
-          class="gmap_iframe h-96 w-full"
-          frameborder="0"
-          scrolling="no"
-          marginheight="0"
-          marginwidth="0"
-          src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=22 full gospel&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-        ></iframe>
+
+    <!-- Event Program Schedule Timeline -->
+    <div class="max-w-4xl mx-auto mt-12 sm:mt-20 mb-10 sm:mb-16">
+      <h3 class="text-2xl sm:text-3xl font-ubuntu font-bold text-center text-white mb-8 sm:mb-12">
+        Wedding Day Program
+      </h3>
+      
+      <div class="relative px-4 md:px-0">
+        <!-- Vertical line -->
+        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-sage-green bg-opacity-40 transform md:-translate-x-1/2"></div>
+
+        <!-- Timeline Items -->
+        <div class="space-y-12">
+          @for (event of events; track event.title; let idx = $index; let odd = $odd) {
+            <div class="relative flex flex-col md:flex-row items-start md:items-center">
+              
+              <!-- Timeline connector dot -->
+              <div class="absolute left-6 md:left-1/2 w-10 h-10 rounded-full bg-gray-800 border-2 border-sage-green flex items-center justify-center transform -translate-x-1/2 shadow-md z-10">
+                <span class="text-lg">{{ event.icon }}</span>
+              </div>
+
+              <!-- Time Indicator -->
+              <div class="w-full md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right" [class.md:order-1]="!odd" [class.md:order-2]="odd">
+                <span class="inline-block px-3 py-1 bg-sage-green/10 text-sage-green font-montserrat font-semibold text-sm rounded-full border border-sage-green/30">
+                  {{ event.time }}
+                </span>
+              </div>
+
+              <!-- Event Card Content -->
+              <div class="w-full md:w-1/2 pl-12 md:pl-12 mt-2 md:mt-0" [class.md:order-2]="!odd" [class.md:order-1]="odd" [class.md:pr-12]="odd" [class.md:pl-0]="odd">
+                <div class="bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-xl border border-gray-700 hover:border-gold-accent/40 hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5">
+                  <h4 class="text-lg font-ubuntu font-bold text-white mb-1">{{ event.title }}</h4>
+                  @if (event.description) {
+                    <p class="text-sm font-montserrat text-gray-400 leading-relaxed">{{ event.description }}</p>
+                  }
+                </div>
+              </div>
+
+            </div>
+          }
+        </div>
       </div>
-      <style>
-        .mapouter {
-          position: relative;
-          text-align: right;
-        }
-        .gmap_canvas {
-          overflow: hidden;
-          background: none !important;
-        }
-      </style>
+    </div>
+
+    <!-- Maps Section -->
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Church Map -->
+      <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-800 relative group flex flex-col">
+        <!-- Map Frame -->
+        <div class="relative w-full" style="padding-top: 100%; sm:padding-top: 75%;">
+          <iframe
+            class="absolute inset-0 w-full h-full opacity-80 group-hover:opacity-95 transition-opacity duration-300"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Semien+Mulu+Wengel+Local+Church+Addis+Ababa&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <!-- Floating Glassmorphic Venue Widget -->
+        <div class="absolute bottom-4 inset-x-4 backdrop-blur-md bg-gray-950/90 border border-white/10 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl transition-all duration-300 hover:border-gold-accent/40">
+          <div class="flex items-center gap-3 text-center sm:text-left w-full sm:w-auto">
+            <div class="hidden sm:flex w-10 h-10 rounded-full bg-gold-accent/10 border border-gold-accent/30 items-center justify-center text-gold-accent text-lg flex-shrink-0 animate-pulse">
+              💒
+            </div>
+            <div>
+              <h4 class="text-white font-ubuntu font-bold text-sm">ሰሜን ሙሉ ወንጌል</h4>
+              <p class="text-gray-400 font-montserrat text-xs mt-1">የቃልኪዳን ስነስርዓት &bull; 4:50 LT</p>
+            </div>
+          </div>
+          <a
+            href="https://maps.app.goo.gl/9QxX1J7JyVMwhcnJ9"
+            target="_blank"
+            class="w-full sm:w-auto text-center inline-flex justify-center items-center gap-1.5 bg-gradient-to-r from-gold-accent to-amber-500 hover:from-amber-500 hover:to-gold-accent text-gray-950 font-montserrat font-bold py-2.5 px-4 rounded-xl shadow-lg transition-transform hover:scale-105 active:scale-95 duration-200 text-[10px] uppercase tracking-wider whitespace-nowrap"
+          >
+            <span>Open Map</span>
+            <svg class="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform hidden sm:block" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.09 18.281L12 3.75l5.91 14.531-5.91-3.63-5.91 3.63z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hotel Map -->
+      <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-800 relative group flex flex-col">
+        <!-- Map Frame -->
+        <div class="relative w-full" style="padding-top: 100%; sm:padding-top: 75%;">
+          <iframe
+            class="absolute inset-0 w-full h-full opacity-80 group-hover:opacity-95 transition-opacity duration-300"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Genet+Hotel+Addis+Ababa&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <!-- Floating Glassmorphic Venue Widget -->
+        <div class="absolute bottom-4 inset-x-4 backdrop-blur-md bg-gray-950/90 border border-white/10 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl transition-all duration-300 hover:border-pink-400/40">
+          <div class="flex items-center gap-3 text-center sm:text-left w-full sm:w-auto">
+            <div class="hidden sm:flex w-10 h-10 rounded-full bg-pink-500/10 border border-pink-500/30 items-center justify-center text-pink-400 text-lg flex-shrink-0 animate-pulse">
+              🍽️
+            </div>
+            <div>
+              <h4 class="text-white font-ubuntu font-bold text-sm">ገነት ሆቴል</h4>
+              <p class="text-gray-400 font-montserrat text-xs mt-1">የምሳ ፕሮግራም &bull; 7:30 LT</p>
+            </div>
+          </div>
+          <a
+            href="https://maps.app.goo.gl/H1NNUsTEgjh5yuqb9"
+            target="_blank"
+            class="w-full sm:w-auto text-center inline-flex justify-center items-center gap-1.5 bg-gradient-to-r from-pink-500 to-rose-400 hover:from-rose-400 hover:to-pink-500 text-white font-montserrat font-bold py-2.5 px-4 rounded-xl shadow-lg transition-transform hover:scale-105 active:scale-95 duration-200 text-[10px] uppercase tracking-wider whitespace-nowrap"
+          >
+            <span>Open Map</span>
+            <svg class="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform hidden sm:block" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.09 18.281L12 3.75l5.91 14.531-5.91-3.63-5.91 3.63z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
     </div>
   </div>
 </section>

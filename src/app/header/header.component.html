@@ -1,10 +1,18 @@
-<nav *ngIf="isHeaderVisible" class="sticky-nav bg-white bg-opacity-90 backdrop-blur-md shadow-md p-4 transition-transform duration-300">
-  <ul class="flex justify-center gap-8">
-    <li><a (click)="scrollTo('home')" class="text-gray-700 hover:text-sage-green cursor-pointer">Home</a></li>
-    <li><a (click)="scrollTo('about-us')" class="text-gray-700 hover:text-sage-green cursor-pointer">About Us</a></li>
-    <li><a (click)="scrollTo('our-story')" class="text-gray-700 hover:text-sage-green cursor-pointer">Our Story</a></li>
-    <li><a (click)="scrollTo('wedding-details')" class="text-gray-700 hover:text-sage-green cursor-pointer">Wedding Details</a></li>
-    <li><a (click)="scrollTo('registry')" class="text-gray-700 hover:text-sage-green cursor-pointer">Registry</a></li>
-    <li><a (click)="scrollTo('subscribe')" class="text-gray-700 hover:text-sage-green cursor-pointer">Subscribe</a></li>
-  </ul>
-</nav>
+<div *ngIf="isHeaderVisible" class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-300">
+  <nav class="bg-white/85 backdrop-blur-md border border-gray-200 border-opacity-40 rounded-full px-6 py-3 shadow-md flex items-center justify-between w-full max-w-4xl transition-all duration-300 hover:shadow-lg">
+    <!-- Cursive Wedding Logo Monogram -->
+    <div (click)="scrollTo('home')" class="text-2xl font-script text-gold-accent hover:text-pink-400 transition-colors cursor-pointer select-none">
+      Dere & Tinsu
+    </div>
+    
+    <!-- Navigation Links -->
+    <ul class="flex gap-4 md:gap-7 items-center">
+      <li><a (click)="scrollTo('home')" class="text-[11px] md:text-xs font-montserrat font-bold uppercase tracking-wider text-gray-700 hover:text-gold-accent transition-colors cursor-pointer">Home</a></li>
+      <li><a (click)="scrollTo('about-us')" class="text-[11px] md:text-xs font-montserrat font-bold uppercase tracking-wider text-gray-700 hover:text-gold-accent transition-colors cursor-pointer">About</a></li>
+      <li><a (click)="scrollTo('our-story')" class="text-[11px] md:text-xs font-montserrat font-bold uppercase tracking-wider text-gray-700 hover:text-gold-accent transition-colors cursor-pointer">Story</a></li>
+      <li><a (click)="scrollTo('wedding-details')" class="text-[11px] md:text-xs font-montserrat font-bold uppercase tracking-wider text-gray-700 hover:text-gold-accent transition-colors cursor-pointer">Details</a></li>
+      <li><a (click)="scrollTo('registry')" class="text-[11px] md:text-xs font-montserrat font-bold uppercase tracking-wider text-gray-700 hover:text-gold-accent transition-colors cursor-pointer">Wishes</a></li>
+      <li><a (click)="scrollTo('subscribe')" class="text-[11px] md:text-xs font-montserrat font-bold uppercase tracking-wider text-gray-700 hover:text-gold-accent transition-colors cursor-pointer">Subscribe</a></li>
+    </ul>
+  </nav>
+</div>

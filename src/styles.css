@@ -12,3 +12,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ── Global Dark Theme Base ── */
+html {
+  background-color: #030712; /* gray-950 equivalent */
+}
+body {
+  background-color: transparent;
+  color: #f9fafb;
+  scrollbar-color: #374151 #111827;
+  scrollbar-width: thin;
+}
+
+/* Subtle, elegant watermark image background of the couple */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('assets/images/PHDE8960.JPG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.20; /* subtle watermark to maintain high readability */
+  pointer-events: none;
+  z-index: -1;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111827;
+}
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}

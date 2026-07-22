@@ -11,18 +11,18 @@ import { CommonModule } from '@angular/common';
 })
 export class AboutUsComponent implements AfterViewInit {
   groomImages = [
-    'assets/images/042.webp',
-    'assets/images/044.webp',
-    'assets/images/07.webp',
-    'assets/images/063.webp',
-    'assets/images/065.webp'
+    'assets/images/PHDE0475.JPG',
+    'assets/images/PHDE9313.JPG',
+    'assets/images/PHDE0146.JPG',
+    'assets/images/PHDE9316.JPG',
+    'assets/images/PHDE9806.JPG'
   ];
 
   brideImages = [
-    'assets/images/012.webp',
-    'assets/images/019.webp',
-    'assets/images/050.webp',
-    'assets/images/047.webp',
+    'assets/images/PHDE0463.JPG', 
+    'assets/images/PHDE0594.JPG',
+    'assets/images/PHDE0343.JPG',
+    'assets/images/PHDE0289.JPG',
   ];
 
   ngAfterViewInit(): void {

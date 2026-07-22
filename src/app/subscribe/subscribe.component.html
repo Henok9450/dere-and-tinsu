@@ -1,77 +1,41 @@
+<section id="subscribe" class="py-16 sm:py-20 px-4 bg-transparent flex items-center justify-center">
+  <div class="container mx-auto max-w-5xl">
+    <div class="bg-gray-800 rounded-3xl shadow-2xl border border-gray-700 overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0">
+      
+      <!-- Video / Theater Frame (Left Column) -->
+      <div class="lg:col-span-7 relative h-56 sm:h-72 lg:h-auto min-h-[280px] sm:min-h-[350px] bg-gray-900">
+        <iframe
+          class="absolute inset-0 w-full h-full object-cover"
+          src="https://www.youtube.com/embed/wCms8AAuzgg?autoplay=0&rel=0"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
 
-  <div class="justify-center text-4xl font-bold text-center text-gray-800 mb-8">
-    <p class="text-white text-lg bg-red-600 px-4 py-2 rounded-lg shadow-lg">🎥 Join us on YouTube!</p>
-  </div>
-  
-  <section id="subscribe" class="relative w-full h-screen overflow-hidden">
-  <!-- Background Video -->
-  <div class="absolute inset-0 z-0">
-    <iframe
-      class="w-full h-full object-cover"
-      src="https://www.youtube.com/embed/WN1-cwfDM7k?autoplay=1&start=111&mute=1&loop=1&playlist=WN1-cwfDM7k"
-      frameborder="0"
-      allow="autoplay; fullscreen"
-    >
-    </iframe>
-  </div>
+      <!-- Call to Action Content (Right Column) -->
+      <div class="lg:col-span-5 p-6 sm:p-8 md:p-12 flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-800 to-gray-900">
+        <span class="text-sm font-montserrat uppercase tracking-widest text-gold-accent font-bold mb-2">Our Music</span>
+        <h2 class="text-3xl sm:text-4xl font-script text-white mb-4">Our Favorite Song</h2>
+        <div class="w-16 h-0.5 bg-gold-accent mb-6 opacity-60"></div>
+        
+        <p class="text-sm font-montserrat text-gray-400 leading-relaxed font-light mb-8 max-w-sm">
+          "ያም አለፈ እንዳለፈው" — This is our favorite song, carrying a profound message about our journey and our union.
+        </p>
 
-  <!-- Overlay with Buttons -->
-  <div
-    class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center z-10"
-  >
-    <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">Subscribe</h2>
-    <p class="text-lg md:text-xl text-white mb-6">
-      Follow us on YouTube and listen to our favorite songs!
-    </p>
-    <div class="flex space-x-6">
-      <a
-        href="https://www.youtube.com/@betelhemsolomon1978"
-        class="bg-red-600 text-white px-6 py-3 text-lg rounded-lg shadow-lg transition transform hover:scale-105"
-        target="_blank"
-        >Betty's YouTube Channel</a
-      >
+        <a
+          href="https://youtu.be/wCms8AAuzgg?si=SuLdCFFdEeFODWWd"
+          target="_blank"
+          class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:-translate-y-0.5 duration-200"
+        >
+          <!-- YouTube SVG Icon -->
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.053 0 12 0 12s0 3.947.502 5.837a3.003 3.003 0 0 0 2.11 2.107c1.883.511 9.388.511 9.388.511s7.505 0 9.388-.511a3.002 3.002 0 0 0 2.11-2.107c.502-1.89.502-5.837.502-5.837s0-3.947-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Watch on YouTube
+        </a>
+      </div>
+
     </div>
-  </div>
-
-  <!-- Encourage Subscription Left -->
-  <div class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
-    <p class="text-white text-lg bg-red-600 px-4 py-2 rounded-lg shadow-lg">📢 Don't forget to subscribe!</p>
-  </div>
-
-  <!-- Encourage Subscription Right -->
-
-
-  <!-- Floral Corners -->
-  <div
-    class="absolute top-0 left-0 w-0 h-0 border-l-[100px] border-l-transparent border-b-[100px] border-b-white"
-  >
-    <img
-      src="assets/blu-08.jpg"
-      class="absolute top-0 left-0 w-32 opacity-80 animate-fade-in"
-    />
-  </div>
-  <div
-    class="absolute top-0 right-0 w-0 h-0 border-r-[100px] border-r-transparent border-b-[100px] border-b-white"
-  >
-    <img
-      src="assets/blu-08.jpg"
-      class="absolute top-0 left-0 w-32 opacity-80 animate-fade-in"
-    />
-  </div>
-  <div
-    class="absolute bottom-0 left-0 w-0 h-0 border-l-[100px] border-l-transparent border-t-[100px] border-t-white"
-  >
-    <img
-      src="assets/blu-08.jpg"
-      class="absolute top-0 left-0 w-32 opacity-80 animate-fade-in"
-    />
-  </div>
-  <div
-    class="absolute bottom-0 right-0 w-0 h-0 border-r-[100px] border-r-transparent border-t-[100px] border-t-white"
-  >
-    <img
-      src="assets/blu-08.jpg"
-      class="absolute top-0 left-0 w-32 opacity-80 animate-fade-in"
-    />
   </div>
 </section>

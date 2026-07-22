@@ -1,14 +1,6 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  AfterViewInit,
-  ElementRef,
-  ViewChild,
-  OnInit,
-} from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { MDCImageList } from '@material/image-list';
-import Glide from '@glidejs/glide'; 
+import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-gallery',
   standalone: true, 
@@ -16,66 +8,89 @@ import Glide from '@glidejs/glide';
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.css',
 })
-export class GalleryComponent implements OnInit, AfterViewInit {
-  ngOnInit(): void {
-    this.loadImages(); 
-  }
-  @ViewChild('galleryGlide', { static: false }) galleryGlide!: ElementRef;
-  OurImages: string[] = [];
-  masonaryImages: string[] = [
-    'assets/images/070.webp',
-    'assets/images/068.webp',
-    'assets/images/066.webp',
-    'assets/images/063.webp',
-    'assets/images/059.webp',
-    'assets/images/056.webp',
-    'assets/images/054.webp',
-    'assets/images/061.webp',
-    'assets/images/052.webp',
-    'assets/images/025.webp',
-    'assets/images/036.webp',
-    'assets/images/033.webp',
-    'assets/images/09.webp',
-    'assets/images/06.webp',
-    'assets/images/03.webp',
-  ];
-  ngAfterViewInit(): void {
-    new Glide(this.galleryGlide.nativeElement, {
-      type: 'carousel',
-      startAt: 0,
-      perView: 3,
-      autoplay: 3000,
-      hoverpause: true,
-      animationDuration: 1000,
-      gap: 10,
-    }).mount();
-    new Glide('.gallery-slider', {
-      type: 'carousel',
-      autoplay: 3000,
-      hoverpause: true,
-      perView: 3,
-      gap: 20,
-      animationDuration: 1000,
-      breakpoints: {
-        1024: {
-          perView: 2,
-        },
-        768: {
-          perView: 1,
-        },
-      },
-    }).mount();
+export class GalleryComponent implements OnInit {
+  activeImage: string | null = null;
+  activeIdx: number = -1;
 
-    // new MDCImageList(this.masonryList.nativeElement);
+  images: string[] = [
+    'assets/images/PHDE9008.JPG',
+    'assets/images/PHDE9014.JPG',
+    'assets/images/PHDE9036.JPG',
+    'assets/images/PHDE9146.JPG',
+    'assets/images/PHDE9172.JPG',
+    'assets/images/PHDE9174.JPG',
+    'assets/images/PHDE9217.JPG',
+    'assets/images/PHDE9225.JPG',
+    'assets/images/PHDE9227.JPG',
+    'assets/images/PHDE9236.JPG',
+    'assets/images/PHDE9350.JPG',
+    'assets/images/PHDE9452.JPG',
+    'assets/images/PHDE9456.JPG',
+    'assets/images/PHDE9484.JPG',
+    'assets/images/PHDE9568.JPG',
+    'assets/images/PHDE9602.JPG',
+    'assets/images/PHDE9705.JPG',
+    'assets/images/PHDE9754.JPG',
+    'assets/images/PHDE9791.JPG',
+    'assets/images/PHDE9818.JPG',
+    'assets/images/PHDE9856.JPG',
+    'assets/images/PHDE9873.JPG',
+    'assets/images/PHDE9940.JPG',
+    'assets/images/01.png',
+    'assets/images/PHDE0074.JPG',
+    'assets/images/PHDE0134.JPG',
+    'assets/images/PHDE0216.JPG',
+    'assets/images/PHDE0243.JPG',
+    'assets/images/PHDE0260.JPG',
+    'assets/images/PHDE0285.JPG',
+    'assets/images/PHDE0287.JPG',
+    'assets/images/PHDE0485.JPG',
+    'assets/images/PHDE0508.JPG',
+    'assets/images/PHDE0530.JPG',
+    'assets/images/PHDE0545.JPG',
+    'assets/images/PHDE0610.JPG',
+    'assets/images/PHDE0625.JPG',
+    'assets/images/PHDE0645.JPG',
+    'assets/images/PHDE0660.JPG',
+    'assets/images/PHDE0699.JPG',
+    'assets/images/PHDE8958.JPG',
+    'assets/images/PHDE8960.JPG'
+  ];
+
+
+  ngOnInit(): void {
+    // Images are configured with correct file extensions
   }
-  loadImages(): void {
-    for (let i = 10; i <= 20; i++) {
-      this.OurImages.push(`assets/images/0${i}.webp`);
+
+  openLightbox(image: string, index: number): void {
+    this.activeImage = image;
+    this.activeIdx = index;
+  }
+
+  closeLightbox(): void {
+    this.activeImage = null;
+    this.activeIdx = -1;
+  }
+
+  nextImage(event: Event): void {
+    event.stopPropagation();
+    if (this.activeIdx < this.images.length - 1) {
+      this.activeIdx++;
+      this.activeImage = this.images[this.activeIdx];
+    } else {
+      this.activeIdx = 0;
+      this.activeImage = this.images[0];
     }
   }
-   
-  getRandomSize() {
-    const sizes = ['h-40', 'h-56', 'h-72', 'h-96'];
-    return sizes[Math.floor(Math.random() * sizes.length)];
+
+  prevImage(event: Event): void {
+    event.stopPropagation();
+    if (this.activeIdx > 0) {
+      this.activeIdx--;
+      this.activeImage = this.images[this.activeIdx];
+    } else {
+      this.activeIdx = this.images.length - 1;
+      this.activeImage = this.images[this.activeIdx];
+    }
   }
 }

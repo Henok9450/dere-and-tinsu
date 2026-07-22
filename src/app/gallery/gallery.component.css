@@ -1,116 +1,28 @@
-@import 'tailwindcss/tailwind.css';
-
-/* General Styles */
-.gallery-section {
-    @apply w-full p-10 bg-gray-100;
-}
-
-/* Flip Animation */
-.perspective {
-    perspective: 1000px;
-}
-
-.group .relative {
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease-in-out;
-}
-
-.group:hover .relative {
-    transform: rotateY(180deg);
-}
-
-.backface-hidden {
-    backface-visibility: hidden;
-}
-
-.rotate-y-180 {
-    transform: rotateY(180deg);
-}
-
-/* Fade Effect */
-.fade-hover {
-    transition: opacity 0.5s ease-in-out;
-}
-
-.fade-hover:hover {
-    opacity: 0.5;
-}
-
-/* Swipe Effect */
-.swipe-hover {
-    transition: transform 0.5s ease-in-out;
-}
-
-.swipe-hover:hover {
-    transform: translateX(10px);
-}
-
-/* Glide.js Custom Styling */
-.glide {
-    @apply w-full;
-}
-
-.glide__slide .img-top {
-    @apply w-full h-56 object-cover rounded-lg;
-}
-.gallery-slider {
-    position: relative;
-  }
-  
-  .glide__slide {
-    opacity: 0.8;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  
-  .glide__slide--active {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-  
-  /* Flip Animation */
-  .flip-card {
-    perspective: 1000px;
-  }
-  
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
-  
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 0.5rem;
-  }
-  
-  .flip-card-back {
-    background-color: #87A96B;
-    color: white;
-    transform: rotateY(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-  }
-  
-  /* Fade Animation */
-  .fade-in {
+/* Custom Animations for Lightbox */
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    transition: opacity 0.5s ease;
   }
-  
-  .fade-in.active {
+  to {
     opacity: 1;
   }
-  .masonry-item {
-    transition: top 0.4s ease-in-out, left 0.4s ease-in-out; }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

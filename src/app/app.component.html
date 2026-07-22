@@ -1,6 +1,71 @@
-<app-header></app-header> 
+@if (showInvitationBox) {
+  <div 
+    class="fixed inset-0 z-[2000] bg-black/60 backdrop-blur-[3px] flex items-center justify-center transition-all duration-700 ease-in-out p-4"
+    [class.opacity-0]="isOpening"
+    [class.pointer-events-none]="isOpening"
+  >
+    <!-- Invitation Box Card Frame -->
+    <div 
+      class="relative w-full max-w-lg backdrop-blur-xl bg-gray-950/80 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/10 p-8 sm:p-12 md:p-16 text-center transform transition-all duration-700 ease-in-out royal-card"
+      [class.scale-90]="isOpening"
+      [class.translate-y-4]="isOpening"
+    >
+      <!-- Royal Corner Flourishes -->
+      <div class="corner-ornament corner-tl"></div>
+      <div class="corner-ornament corner-tr"></div>
+      <div class="corner-ornament corner-bl"></div>
+      <div class="corner-ornament corner-br"></div>
 
-<main>
+      <!-- Header invitation line -->
+      <span class="text-[10px] font-montserrat tracking-[0.25em] uppercase text-gray-400 block mb-3">
+        You are invited to the wedding of
+      </span>
+      
+      <!-- Cursive names -->
+      <h1 class="text-4xl sm:text-5xl md:text-6.5xl font-script text-gold-accent my-3 leading-none drop-shadow-md">
+        Dere & Tinsu
+      </h1>
+      
+      <div class="w-20 h-[1.5px] bg-gradient-to-r from-transparent via-gold-accent/50 to-transparent mx-auto my-6"></div>
+
+      <!-- Date & Venue info -->
+      <p class="text-xs sm:text-sm font-montserrat text-gray-300 tracking-[0.15em] uppercase mb-8">
+        August 2, 2026 &bull; Addis Ababa
+      </p>
+
+      <!-- Scripture Quote -->
+      <p class="text-xs sm:text-sm font-montserrat text-gray-400 leading-relaxed font-light mb-10 max-w-md mx-auto italic">
+        "I have found the one whom my soul loves." &bull; Song of Solomon 3:4
+      </p>
+
+      <!-- Clickable Wax Seal Button -->
+      <div class="pulse-ring-container my-4">
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring pulse-ring-2"></div>
+        
+        <button 
+          (click)="openInvitation()"
+          class="wax-seal outline-none"
+          title="Open Invitation Box"
+        >
+          <div class="wax-inner-ring">
+            <span class="wax-emblem font-script">D&T</span>
+          </div>
+        </button>
+      </div>
+
+      <span class="text-[10px] font-montserrat tracking-widest text-gold-accent/70 uppercase block mt-6 animate-pulse">
+        Tap Seal to Open
+      </span>
+    </div>
+  </div>
+}
+
+<main 
+  class="transition-opacity duration-1000 ease-in-out"
+  [class.opacity-0]="showInvitationBox && !isOpening"
+  [class.pointer-events-none]="showInvitationBox && !isOpening"
+>
   <section id="home"><app-home></app-home></section>
   <section id="about-us"><app-about-us></app-about-us></section>
   <section id="our-story"><app-our-story></app-our-story></section>

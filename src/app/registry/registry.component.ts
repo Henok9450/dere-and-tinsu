@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { TelegramService } from './telegram.service';
 
 @Component({
   selector: 'app-registry',
@@ -13,11 +13,17 @@ import { BrowserModule } from '@angular/platform-browser';
 export class RegistryComponent {
   guestName: string = '';
   guestMessage: string = '';
+  photoPreview: string | null = null;
+  selectedPhoto: File | null = null;
+
+  /** 'idle' | 'sending' | 'success' | 'error' */
+  submitState: 'idle' | 'sending' | 'success' | 'error' = 'idle';
+
   messages: { name: string; src: string; text: string; color: string }[] = [
     {
       name: 'ጌታባለው.',
       src: 'assets/images/thanks/a.jpg',
-      text: 'ጌት ስለአንተ ስናስብ ስለማረፊያችን ነው የምናስበው። እግዚአብሔር በአንተ በብዙ መንገድ አሳርፎናል። ገና ከጅምሩ አንዳንድ ነገር እንዴት ሊሆን ነው ብለን መጨነቅ ሳንጀምር አንተ ጋር መፍትሄው አለ።በጥቂት ቃላት ግለጹት ብንባል " ሰው እንዴት ጓደኛም ቤተሰብም አለቃም መሆን ይችላል?" ነው ማለት የምንችለው። ስለአንተ ቸሩ ይመስገን',
+      text: 'ጌት ስለአንተ ስናስብ ስለማረፊያችን ነው የምናስበው። እግዚአብሔር በአንተ በብዙ መንገድ አሳርፎናል። ገና ከጅምሩ አንዳንድ ነገር እንዴት ሊሆን ነው ብለን መጨነቅ ሳንጀምር አንተ ጋር መፍትሄው አለ።በጥቂት ቃላት ግለጹት ብንባል \" ሰው እንዴት ጓደኛም ቤተሰብም አለቃም መሆን ይችላል?\" ነው ማለት የምንችለው። ስለአንተ ቸሩ ይመስገን',
       color: '#FFD3B5',
     },
     {
@@ -61,36 +67,53 @@ export class RegistryComponent {
       src: 'assets/images/thanks/tg.jpg',
       text: 'ቅድም አግኝተንሽ ግን ለአመታት የዘለቀ ወዳጅነት እንዳለን እንዲሰማን ያደረግሽበት ጥበብ ደግሞም ለሕይወት ዘመን የሚሆነን ስንቅ ለማሰነቅ ስትደክሚ ለሚያይሽ ሰው ከዛ ሁሉ ሃላፊነት አጣበሽ የመጣሽ ከዛ ሁሉ የሕይወት ልምድ ለኛ ለትንንሾቹ ለማካፈል የወረድሽ አትመስዪም። ደግሞ በእኛ ፊት ስለ ሁሉ ግልጽ ሆነሽልን አስተዋይ አደረግሽን። ከመጣነው መንገድ ይልቅ የምንሄደውን ስናየው እንዴት እንደሚያጓጓን በቃ እንወድሻለን',
       color: '#FFDAC1',
-    }
-    
+    },
   ];
 
-  pastelColors = [
-    '#FFD3B5',
-    '#FFAAA6',
-    '#D5AAFF',
-    '#A2D5F2',
-    '#F5D76E',
-    '#FF9AA2',
-    '#FFB7B2',
-    '#FFDAC1',
-    '#B5EAD7',
-    '#C7CEEA',
-  ];
+  constructor(private telegram: TelegramService) {}
+
+  onPhotoSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+
+    this.selectedPhoto = file;
+
+    // Generate a local preview URL
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.photoPreview = e.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
 
   addMessage(event: Event): void {
     event.preventDefault();
-    if (this.guestName.trim() && this.guestMessage.trim()) {
-      const randomColor =
-        this.pastelColors[Math.floor(Math.random() * this.pastelColors.length)];
-      this.messages.unshift({
-        name: this.guestName,
-        src: 'assets/images/thanks/h.jpg',
-        text: this.guestMessage,
-        color: randomColor,
-      });
-      this.guestName = '';
-      this.guestMessage = '';
-    }
+    if (!this.guestName.trim() || !this.guestMessage.trim()) return;
+
+    this.submitState = 'sending';
+
+    const send$ = this.selectedPhoto
+      ? this.telegram.sendWishWithPhoto(
+          this.guestName.trim(),
+          this.guestMessage.trim(),
+          this.selectedPhoto
+        )
+      : this.telegram.sendWish(this.guestName.trim(), this.guestMessage.trim());
+
+    send$.subscribe({
+      next: () => {
+        this.submitState = 'success';
+        this.guestName = '';
+        this.guestMessage = '';
+        this.photoPreview = null;
+        this.selectedPhoto = null;
+        setTimeout(() => (this.submitState = 'idle'), 4000);
+      },
+      error: () => {
+        this.submitState = 'error';
+        setTimeout(() => (this.submitState = 'idle'), 4000);
+      },
+    });
   }
 }

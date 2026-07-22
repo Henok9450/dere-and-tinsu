@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router'; 
-import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { OurStoryComponent } from './our-story/our-story.component';
 import { WeddingDetailsComponent } from './wedding-details/wedding-details.component';
@@ -15,7 +14,6 @@ import { FooterComponent } from './footer/footer.component'; // ✅ Import Heade
   standalone: true,
   imports: [
     RouterOutlet,
-    HeaderComponent,
     HomeComponent,
     OurStoryComponent,
     WeddingDetailsComponent,
@@ -29,9 +27,19 @@ import { FooterComponent } from './footer/footer.component'; // ✅ Import Heade
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  showInvitationBox = true;
+  isOpening = false;
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void { 
+  }
+
+  openInvitation(): void {
+    this.isOpening = true;
+    setTimeout(() => {
+      this.showInvitationBox = false;
+    }, 700); // Wait for the 700ms scale/fade-out animation
   }
 
   ngAfterViewInit(): void {
