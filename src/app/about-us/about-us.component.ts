@@ -41,7 +41,7 @@ export class AboutUsComponent implements AfterViewInit {
       type: 'carousel',
       autoplay: 3000,
       hoverpause: true,
-      perView: 2,
+      perView: 1,
       gap: 0,      
       animationDuration: 1000,
     }).mount();
