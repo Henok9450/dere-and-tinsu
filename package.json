@@ -19,8 +19,8 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "@glidejs/glide": "^3.7.1",
-    "@material/image-list": "^14.0.0", 
-    "jquery": "^3.7.1", 
+    "@material/image-list": "^14.0.0",
+    "jquery": "^3.7.1",
     "pogo-slider": "^0.7.0",
     "rxjs": "~7.8.0",
     "swiper": "^11.2.2",
@@ -43,6 +43,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.5.1",
+    "sharp": "^0.35.3",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.4.2"
   }
